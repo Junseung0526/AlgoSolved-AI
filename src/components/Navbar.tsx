@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Settings as SettingsIcon, LayoutGrid, Terminal, Cpu } from 'lucide-react';
+import { Settings as SettingsIcon, LayoutGrid, Terminal } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
