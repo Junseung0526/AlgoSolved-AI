@@ -1,75 +1,41 @@
-# React + TypeScript + Vite
+# AlgoSolved-AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI-assisted algorithm practice web app. Pick a problem, write a Python solution, and ask Gemini for a hint or a code review instead of a direct answer.
 
-Currently, two official plugins are available:
+**Live demo:** https://algo-solved-ai.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Problem list with category and difficulty (e.g. Binary Search, Easy), each with description, input/output format and examples
+- **Hint mode:** analyzes your code and returns hints and direction without revealing the solution
+- **Review mode:** reviews your Python code for clean code and efficiency and suggests a revised version
+- Responses rendered as Markdown
+- Bring your own Gemini API key on the Settings page; it is stored only in your browser's `localStorage`
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Tech Stack
 
-Note: This will impact Vite dev & build performances.
+React, TypeScript, Vite, React Router, Google Gemini API, deployed on Vercel
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open the app, go to **Settings**, and enter a [Gemini API key](https://aistudio.google.com/apikey).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run build    # type-check and production build
+npm run preview  # serve the production build locally
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+
+```
+src/
+  pages/        Home, ProblemList, ProblemDetail, Settings
+  components/   Navbar
+  data/         problem definitions
+  services/     Gemini API client
 ```
